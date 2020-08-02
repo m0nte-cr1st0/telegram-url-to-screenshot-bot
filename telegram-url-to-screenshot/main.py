@@ -11,7 +11,7 @@ from telegram.ext import (
     Updater,
 )
 
-from config import BOT_TOKEN, SCREENSHOT_NAME, logger
+from config import BOT_TOKEN, SCREENSHOT_DIR, SCREENSHOT_NAME, logger
 from exceptions import SeleniumException, TelegramException
 from parsing import open_web_site
 
@@ -29,7 +29,7 @@ def make_screenshot(driver: WebDriver) -> None:
     :return: None
     """
     try:
-        driver.save_screenshot(SCREENSHOT_NAME)
+        driver.save_screenshot(SCREENSHOT_DIR + SCREENSHOT_NAME)
     except Exception:
         logger.error("Failed on the selenium save image: ", exc_info=True)
         raise SeleniumException("Error. Try later.")
@@ -44,11 +44,13 @@ def send_image(update: Update) -> None:
     try:
         try:
             bot.send_photo(
-                update.message.chat_id, photo=open(SCREENSHOT_NAME, "rb")
+                update.message.chat_id,
+                photo=open(SCREENSHOT_DIR + SCREENSHOT_NAME, "rb"),
             )
         except BadRequest:
             bot.send_document(
-                update.message.chat_id, document=open(SCREENSHOT_NAME, "rb")
+                update.message.chat_id,
+                document=open(SCREENSHOT_DIR + SCREENSHOT_NAME, "rb"),
             )
     except Exception:
         logger.error("Failed on the telegram send image: ", exc_info=True)
@@ -71,7 +73,7 @@ def send_error_message(update: Update, message: str) -> None:
 def remove_image() -> None:
     """Removes image from directory if it exists"""
     try:
-        os.remove(SCREENSHOT_NAME)
+        os.remove(SCREENSHOT_DIR + SCREENSHOT_NAME)
     except OSError:
         pass
 
