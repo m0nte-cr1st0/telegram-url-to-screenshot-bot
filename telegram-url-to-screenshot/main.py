@@ -11,9 +11,9 @@ from telegram.ext import (
     Updater,
 )
 
-from .config import BOT_TOKEN, SCREENSHOT_NAME, logger
-from .exceptions import SeleniumException, TelegramException
-from .parsing import open_web_site
+from config import BOT_TOKEN, SCREENSHOT_NAME, logger
+from exceptions import SeleniumException, TelegramException
+from parsing import open_web_site
 
 
 # Create the Updater and pass it your bot's token.
@@ -100,12 +100,7 @@ def get_images(update: Update, context: CallbackContext) -> None:
 
 
 def main() -> None:
-    """
-    Start the bot.
-    :param bot: Bot
-    :param updater: Updater
-    :return: None
-    """
+    """Start the bot."""
     # Get the dispatcher to register handlers
     dispatcher: Dispatcher = updater.dispatcher
 

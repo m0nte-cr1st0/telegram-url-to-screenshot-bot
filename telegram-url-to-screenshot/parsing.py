@@ -2,8 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.webdriver import WebDriver
 
-from .config import PATH_TO_WEBDRIVER, SCREENSHOT_WIDTH, logger
-from .exceptions import SeleniumException
+from config import PATH_TO_WEBDRIVER, SCREENSHOT_WIDTH, logger
+from exceptions import SeleniumException
 
 
 def open_web_site(url: str) -> WebDriver:

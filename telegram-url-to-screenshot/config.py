@@ -13,6 +13,6 @@ logger = logging.getLogger(__name__)
 
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-PATH_TO_WEBDRIVER = "./chromedriver.exe"
+PATH_TO_WEBDRIVER = "chromedriver.exe"
 SCREENSHOT_NAME = "screenshot.png"
 SCREENSHOT_WIDTH = 1920
