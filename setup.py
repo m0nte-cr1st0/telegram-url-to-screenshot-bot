@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='telegram-url-to-screenshot',
-    version='1.0',
+    name='telegram_url_to_screenshot',
+    version='1.1',
     packages=[''],
     url='https://github.com/m0nte-cr1st0/telegram-url-to-screenshot-bot',
     license='Apache 2.0',
